@@ -60,7 +60,6 @@ section{padding:88px 0;scroll-margin-top:8px} /* Espacio arriba y abajo de cada 
 .plan ul{list-style:none;margin:18px 0 24px;color:var(--texto2);font-size:15px;flex:1} /* Lista de lo que incluye. */
 .plan li{padding:5px 0} /* Espacio entre líneas de la lista. */
 .plan li::before{content:"✓  ";color:var(--azul);font-weight:700} /* Check azul delante de cada línea. */
-.plan.destacado{border:2px solid var(--azul)} /* Plus con borde azul. */
 .preg{max-width:760px;margin:36px auto 0;text-align:left} /* Lista de preguntas frecuentes. */
 .preg details{background:#fff;border:1px solid var(--borde);border-radius:12px;margin-bottom:10px} /* Cada pregunta en su caja. */
 .preg summary{font-weight:600;cursor:pointer;padding:18px 22px;min-height:44px} /* La pregunta: toda la franja se puede pulsar. */
@@ -142,8 +141,8 @@ footer .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap
 <section id="planes" class="blanco"><div class="contenedor centro"><!-- Planes. -->
   <p class="etiqueta">Planes</p><h2>Empieza gratis. Crece cuando lo necesites.</h2><!-- Título de Planes. -->
   <div class="planes"><!-- Las tres tarjetas. -->
-    <div class="plan"><h3>Gratis</h3><div class="num">S/ 0</div><p class="nota">para siempre</p><ul><li>Hasta 5 empresas</li><li>Todos los accesos</li><li>Vencimientos</li><li>Actualizaciones</li></ul><a class="btn secundario descarga" href="https://github.com/FrancoToribio555/Descargas_Conta_Flow/releases/latest">Descargar</a></div><!-- Plan Gratis. -->
-    <div class="plan destacado"><h3>ContaFlow Plus</h3><div class="num">S/ —</div><p class="nota">por mes, por PC</p><ul><li>Hasta 30 empresas</li><li>Todos los accesos</li><li>Vencimientos</li><li>Actualizaciones</li></ul><a class="btn primario" href="https://wa.link/b9o2a2" target="_blank" rel="noopener">Consultar por WhatsApp</a></div><!-- Plan Plus. -->
+    <div class="plan"><h3>Gratis</h3><div class="num">S/ 0</div><p class="nota">para siempre</p><ul><li>Hasta 5 empresas</li><li>Todos los accesos</li><li>Vencimientos</li><li>Actualizaciones</li></ul><a class="btn primario descarga" href="https://github.com/FrancoToribio555/Descargas_Conta_Flow/releases/latest">Descargar</a></div><!-- Plan Gratis: su botón es el principal mientras no se cobra. -->
+    <div class="plan"><h3>ContaFlow Plus</h3><div class="num">S/ —</div><p class="nota">por mes, por PC</p><ul><li>Hasta 30 empresas</li><li>Todos los accesos</li><li>Vencimientos</li><li>Actualizaciones</li></ul><a class="btn secundario" href="https://wa.link/b9o2a2" target="_blank" rel="noopener">Consultar por WhatsApp</a></div><!-- Plan Plus. -->
     <div class="plan"><h3>ContaFlow Pro</h3><div class="num">S/ —</div><p class="nota">por mes, por PC</p><ul><li>Hasta 100 empresas</li><li>Todos los accesos</li><li>Vencimientos</li><li>Actualizaciones</li><li>Soporte prioritario</li></ul><a class="btn secundario" href="https://wa.link/b9o2a2" target="_blank" rel="noopener">Consultar por WhatsApp</a></div><!-- Plan Pro. -->
   </div>
   <p class="nota" style="margin-top:24px">Todos los planes, incluido el Gratis, reciben todas las actualizaciones de ContaFlow.</p><!-- Aclaración de actualizaciones. -->
