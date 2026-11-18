@@ -34,6 +34,7 @@ a:focus-visible,summary:focus-visible{outline:3px solid #93C5FD;outline-offset:2
 h1{font-size:52px;line-height:1.08;letter-spacing:-.025em;font-weight:800} /* Título grande de la portada. */
 h2{font-size:34px;letter-spacing:-.02em;line-height:1.15;font-weight:750} /* Títulos de cada sección. */
 h3{font-size:20px;font-weight:700} /* Títulos de las tarjetas. */
+h1,h2{text-wrap:balance} /* Reparte las líneas de los títulos para que ninguna quede con una sola palabra. */
 .pildora{display:inline-block;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap} /* Etiqueta redondeada, como en la app. */
 .etiqueta{color:var(--azul);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px} /* Palabra azul encima de cada título. */
 section{padding:88px 0;scroll-margin-top:8px} /* Espacio arriba y abajo de cada sección. */
@@ -45,7 +46,7 @@ section{padding:88px 0;scroll-margin-top:8px} /* Espacio arriba y abajo de cada 
 .hero .acciones{display:flex;gap:12px;justify-content:center;flex-wrap:wrap} /* Botones de la portada en fila. */
 .hero .nota{margin-top:14px} /* Separación de la línea "Gratis hasta 5 empresas". */
 .hero .marco{margin:56px auto 0;max-width:1060px;box-shadow:0 40px 80px -30px rgba(29,78,216,.35)} /* Captura grande con sombra azul suave. */
-.fila{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;scroll-margin-top:24px} /* Texto a un lado e imagen al otro. */
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center} /* Texto a un lado e imagen al otro. */
 .fila+.fila{margin-top:96px} /* Espacio entre Accesos y Vencimientos. */
 .texto-grande{font-size:17px;color:var(--texto2);margin-top:16px} /* Párrafo de cada sección. */
 .texto-grande b{color:var(--texto)} /* Nombres de los portales en negro. */
@@ -64,6 +65,11 @@ section{padding:88px 0;scroll-margin-top:8px} /* Espacio arriba y abajo de cada 
 .preg details{background:#fff;border:1px solid var(--borde);border-radius:12px;margin-bottom:10px} /* Cada pregunta en su caja. */
 .preg summary{font-weight:600;cursor:pointer;padding:18px 22px;min-height:44px} /* La pregunta: toda la franja se puede pulsar. */
 .preg p{color:var(--texto2);padding:0 22px 18px} /* La respuesta. */
+.seguridad{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:40px;text-align:left} /* Cuatro razones en 2 columnas. */
+.razon{background:#fff;border:1px solid var(--borde);border-radius:14px;padding:26px} /* Tarjeta de cada razón. */
+.razon p{color:var(--texto2);margin-top:6px} /* Explicación de cada razón. */
+.icono{width:44px;height:44px;border-radius:10px;background:var(--azul-claro);color:var(--azul);display:grid;place-items:center;margin-bottom:16px} /* Cuadradito azul del ícono. */
+.icono svg{width:22px;height:22px} /* Tamaño del ícono. */
 .cta-final{background:var(--azul);color:#fff;border-radius:20px;padding:56px;text-align:center} /* Recuadro azul del final. */
 .cta-final p{color:#DBEAFE;margin:12px 0 28px;font-size:18px} /* Texto del recuadro azul. */
 .cta-final .btn{background:#fff;color:var(--azul)} /* Botón blanco dentro del recuadro azul. */
@@ -80,7 +86,7 @@ footer .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap
   .fila{grid-template-columns:1fr;gap:28px} /* Texto arriba e imagen abajo. */
   .fila+.fila{margin-top:64px} /* Menos espacio entre Accesos y Vencimientos. */
   .semaforo{order:2} /* En Vencimientos, el texto va antes que el semáforo. */
-  .planes{grid-template-columns:1fr} /* Planes uno debajo del otro. */
+  .planes,.seguridad{grid-template-columns:1fr} /* Planes y razones de seguridad uno debajo del otro. */
   .cta-final{padding:40px 20px} /* Recuadro azul con menos relleno. */
   .wa span{display:none} .wa{padding:0;width:56px;justify-content:center} /* En celular, el botón de WhatsApp es solo el ícono. */
 }
@@ -91,7 +97,7 @@ footer .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap
 <div class="contenedor"><!-- Parte de arriba: menú y portada. -->
 <nav aria-label="Menú principal"><!-- Barra del menú. -->
   <a href="#" aria-label="ContaFlow, inicio"><img src="logo-horizontal.svg" alt="ContaFlow" width="150" height="30"></a><!-- Logo; al pulsarlo sube al inicio. -->
-  <div class="links"><a href="#accesos">Accesos</a><a href="#vencimientos">Vencimientos</a><a href="#planes">Planes</a><a href="#ayuda">Ayuda</a><a class="btn primario chico" href="#descargar">Descargar</a></div><!-- Opciones del menú. -->
+  <div class="links"><a href="#accesos">Accesos</a><a href="#vencimientos">Vencimientos</a><a href="#seguridad">Seguridad</a><a href="#planes">Planes</a><a href="#ayuda">Ayuda</a><a class="btn primario chico" href="#descargar">Descargar</a></div><!-- Opciones del menú. -->
 </nav>
 <header class="hero"><!-- Portada. -->
   <span class="pildora" style="background:var(--azul-claro);color:var(--azul)">Para estudios contables del Perú</span><!-- Para quién es. -->
@@ -123,13 +129,24 @@ footer .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap
       <p class="texto-grande">ContaFlow calcula SIRE, PDT 621 y PLAME según el cronograma de SUNAT y el último dígito de cada RUC.</p></div><!-- Explicación. -->
   </div>
 </div></section>
+<section id="seguridad"><div class="contenedor centro"><!-- Seguridad de las credenciales. -->
+  <p class="etiqueta">Seguridad</p><h2>Tus claves no salen de tu PC.</h2><!-- Título de Seguridad. -->
+  <p class="texto-grande" style="max-width:680px;margin:16px auto 0">ContaFlow no tiene servidores ni cuentas en la nube: no existe una base central con tus Claves SOL que pueda filtrarse.</p><!-- Idea principal. -->
+  <div class="seguridad"><!-- Cuatro razones. -->
+    <div class="razon"><div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3>Cifradas por Windows</h3><p>Se guardan en el Administrador de credenciales de Windows, que las cifra con tu inicio de sesión. Solo se abren con tu usuario de Windows.</p></div><!-- Razón 1: cifrado. -->
+    <div class="razon"><div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></div><h3>Solo van al portal oficial</h3><p>La clave se escribe únicamente en el inicio de sesión de SUNAT, SUNAFIL o AFPnet, en su dirección oficial y segura (https). No se envía a ningún otro lugar.</p></div><!-- Razón 2: destino. -->
+    <div class="razon"><div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div><h3>Fuera de archivos y registros</h3><p>La base de datos de ContaFlow guarda RUC, razón social y usuario, nunca las claves. Los registros internos solo anotan tiempos.</p></div><!-- Razón 3: base de datos. -->
+    <div class="razon"><div class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div><h3>Respeta a los portales</h3><p>ContaFlow no evade captchas ni protecciones: si un portal pide verificación, la resuelves tú. Al borrar una empresa, sus claves se borran de Windows.</p></div><!-- Razón 4: buenas prácticas. -->
+  </div>
+</div></section>
 <section id="planes" class="blanco"><div class="contenedor centro"><!-- Planes. -->
   <p class="etiqueta">Planes</p><h2>Empieza gratis. Crece cuando lo necesites.</h2><!-- Título de Planes. -->
   <div class="planes"><!-- Las tres tarjetas. -->
-    <div class="plan"><h3>Gratis</h3><div class="num">S/ 0</div><p class="nota">para siempre</p><ul><li>Hasta 5 empresas</li><li>Todos los accesos</li><li>Vencimientos</li></ul><a class="btn secundario descarga" href="https://github.com/FrancoToribio555/Descargas_Conta_Flow/releases/latest">Descargar</a></div><!-- Plan Gratis. -->
-    <div class="plan destacado"><h3>ContaFlow Plus</h3><div class="num">S/ —</div><p class="nota">por año, por PC</p><ul><li>Hasta 30 empresas</li><li>Todo lo de Gratis</li><li>Actualizaciones</li></ul><a class="btn primario" href="https://wa.link/b9o2a2" target="_blank" rel="noopener">Consultar por WhatsApp</a></div><!-- Plan Plus. -->
-    <div class="plan"><h3>ContaFlow Pro</h3><div class="num">S/ —</div><p class="nota">por año, por PC</p><ul><li>Hasta 100 empresas</li><li>Todo lo de Plus</li><li>Soporte prioritario</li></ul><a class="btn secundario" href="https://wa.link/b9o2a2" target="_blank" rel="noopener">Consultar por WhatsApp</a></div><!-- Plan Pro. -->
+    <div class="plan"><h3>Gratis</h3><div class="num">S/ 0</div><p class="nota">para siempre</p><ul><li>Hasta 5 empresas</li><li>Todos los accesos</li><li>Vencimientos</li><li>Actualizaciones</li></ul><a class="btn secundario descarga" href="https://github.com/FrancoToribio555/Descargas_Conta_Flow/releases/latest">Descargar</a></div><!-- Plan Gratis. -->
+    <div class="plan destacado"><h3>ContaFlow Plus</h3><div class="num">S/ —</div><p class="nota">por mes, por PC</p><ul><li>Hasta 30 empresas</li><li>Todos los accesos</li><li>Vencimientos</li><li>Actualizaciones</li></ul><a class="btn primario" href="https://wa.link/b9o2a2" target="_blank" rel="noopener">Consultar por WhatsApp</a></div><!-- Plan Plus. -->
+    <div class="plan"><h3>ContaFlow Pro</h3><div class="num">S/ —</div><p class="nota">por mes, por PC</p><ul><li>Hasta 100 empresas</li><li>Todos los accesos</li><li>Vencimientos</li><li>Actualizaciones</li><li>Soporte prioritario</li></ul><a class="btn secundario" href="https://wa.link/b9o2a2" target="_blank" rel="noopener">Consultar por WhatsApp</a></div><!-- Plan Pro. -->
   </div>
+  <p class="nota" style="margin-top:24px">Todos los planes, incluido el Gratis, reciben todas las actualizaciones de ContaFlow.</p><!-- Aclaración de actualizaciones. -->
 </div></section>
 <section id="ayuda"><div class="contenedor centro"><!-- Ayuda. -->
   <p class="etiqueta">Ayuda</p><h2>Preguntas frecuentes</h2><!-- Título de Ayuda. -->
@@ -137,7 +154,7 @@ footer .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap
     <details open><summary>Mi navegador dice que el archivo "no se descarga con frecuencia"</summary><p>Es normal en programas nuevos: el navegador aún no conoce el instalador. En <b>Chrome</b>, pulsa "Conservar". En <b>Edge</b>, pulsa "···" y "Conservar"; en la ventana que aparece, abre la flechita junto a "Eliminar" y elige "Mantener de todos modos". Descárgalo solo desde esta página.</p></details><!-- Aviso del navegador. -->
     <details><summary>Windows muestra "Windows protegió su PC"</summary><p>Pulsa "Más información" y luego "Ejecutar de todas formas". Aparece porque ContaFlow es nuevo.</p></details><!-- Aviso de Windows. -->
     <details><summary>¿Qué necesito para usarlo?</summary><p>Una PC con Windows 10 u 11 (64 bits), Google Chrome e internet. No necesita permisos de administrador.</p></details><!-- Requisitos. -->
-    <details><summary>¿Dónde se guardan mis Claves SOL?</summary><p>Solo en el Administrador de credenciales de tu Windows. No se envían a ningún servidor.</p></details><!-- Seguridad de las claves. -->
+    <details><summary>¿Dónde se guardan mis Claves SOL?</summary><p>Solo en el Administrador de credenciales de tu Windows, cifradas con tu inicio de sesión. No se envían a ningún servidor. <a href="#seguridad">Más sobre seguridad</a>.</p></details><!-- Seguridad de las claves. -->
     <details><summary>¿Puedo cargar mis empresas desde Excel?</summary><p>Sí. ContaFlow te da una plantilla de Excel para registrar todas tus empresas de una vez.</p></details><!-- Importar desde Excel. -->
     <details><summary>¿Cómo se actualiza?</summary><p>Al abrirse, ContaFlow revisa si hay una versión nueva y se actualiza solo. Tus empresas y claves se conservan.</p></details><!-- Actualizaciones. -->
     <details><summary>¿Tengo otra duda?</summary><p>Escríbeme por <a href="https://wa.link/b9o2a2" target="_blank" rel="noopener">WhatsApp</a> o con el botón verde de abajo a la derecha.</p></details><!-- Contacto. -->
@@ -150,6 +167,15 @@ footer .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap
 <footer><div class="contenedor"><span>© 2026 ContaFlow</span><a href="https://wa.link/b9o2a2" target="_blank" rel="noopener">Contacto por WhatsApp</a></div></footer><!-- Pie de página. -->
 <a class="wa" href="https://wa.link/b9o2a2" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.2-.2-.4-.3Z"/></svg><span>Escríbenos</span></a><!-- Botón fijo de WhatsApp. -->
 <script>
+// Al pulsar Accesos, Vencimientos o "Ver cómo funciona", deja esa parte en el medio de la pantalla.
+document.querySelectorAll('a[href="#accesos"], a[href="#vencimientos"]').forEach(a => a.addEventListener("click", e => { // Cada uno de esos enlaces.
+  const destino = document.querySelector(a.getAttribute("href")); // La parte a mostrar.
+  e.preventDefault(); // Evitamos el salto normal (que la deja pegada arriba).
+  const cabe = destino.offsetHeight <= innerHeight - 32; // ¿Entra completa en la pantalla?
+  const suave = !matchMedia("(prefers-reduced-motion: reduce)").matches; // Animación solo si la persona no la desactivó.
+  destino.scrollIntoView({block: cabe ? "center" : "start", behavior: suave ? "smooth" : "auto"}); // En el medio; si es muy alta, desde arriba.
+  history.pushState(null, "", a.getAttribute("href")); // Deja la dirección con #accesos o #vencimientos.
+}));
 // Pregunta a GitHub cuál es la última versión publicada y pone su .exe en los botones de descarga.
 fetch("https://api.github.com/repos/FrancoToribio555/Descargas_Conta_Flow/releases/latest") // Datos de la última versión.
   .then(r => r.ok ? r.json() : Promise.reject()) // Si GitHub responde bien, leemos los datos.
