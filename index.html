@@ -77,6 +77,24 @@ footer{border-top:1px solid var(--borde);padding:32px 0 96px;font-size:14px;colo
 footer .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px} /* Derechos a la izquierda, contacto a la derecha. */
 .wa{position:fixed;right:20px;bottom:20px;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px;border-radius:999px;background:#25D366;color:#053B1E;font-weight:700;text-decoration:none;box-shadow:0 10px 24px -8px rgba(0,0,0,.35);z-index:10} /* Botón verde de WhatsApp fijo abajo a la derecha. */
 .wa:hover{background:#1EBE5A} /* Verde más oscuro al pasar el mouse. */
+.guia{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:18px;font-size:15px;color:var(--texto2)} /* Idea A: fila "¿Primera vez?" bajo la portada. */
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;background:#fff;border:1px solid var(--borde);color:var(--texto);font-weight:600;text-decoration:none} /* Botón redondeado de cada navegador. */
+.chip:hover{border-color:#93C5FD;color:var(--azul)} /* Borde y letra azules al pasar el mouse. */
+.guias{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px;text-align:left} /* Idea B: dos tarjetas de manual lado a lado. */
+.gcard{display:block;background:#fff;border:1px solid var(--borde);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit} /* Tarjeta de cada manual (toda se puede pulsar). */
+.gcard:hover{border-color:#93C5FD} /* Borde azul al pasar el mouse. */
+.gcard .mini{height:170px;background:var(--fondo);display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--borde);padding:0 16px} /* Zona gris de la miniatura. */
+.gcard .mini img{max-height:150px;width:auto;border-radius:8px;box-shadow:0 8px 20px -10px rgba(0,0,0,.3)} /* Miniatura del manual. */
+.gcard .info{padding:20px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px} /* Nombre del navegador y "Ver manual". */
+.gcard b{font-size:18px} /* Nombre del navegador. */
+.gcard .ir{color:var(--azul);font-weight:600;white-space:nowrap} /* Texto "Ver manual →". */
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);width:min(560px,calc(100% - 32px));background:#fff;border:1px solid var(--borde);border-radius:16px;box-shadow:0 20px 50px -15px rgba(17,24,39,.35);padding:20px 22px;display:flex;gap:16px;align-items:flex-start;z-index:20;text-align:left} /* Idea C: aviso que aparece al descargar. */
+.toast[hidden]{display:none} /* Oculto hasta que se pulsa un botón de descarga. */
+.toast .icono{flex:none;margin:0} /* Ícono del libro a la izquierda. */
+.toast b{font-size:17px} /* Título "Tu descarga empezó". */
+.toast .bot{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap} /* Botones de los manuales. */
+.toast .x{margin:-10px -10px 0 auto;background:none;border:0;font-size:24px;line-height:1;color:var(--texto2);width:44px;height:44px;cursor:pointer;flex:none;border-radius:10px} /* Botón × para cerrar. */
+.toast .x:hover{background:var(--fondo)} /* Fondo gris al pasar el mouse por la ×. */
 @media (max-width:860px){ /* Pantallas de tablet y celular: */
   h1{font-size:38px} h2{font-size:28px} /* Títulos más pequeños. */
   .contenedor{padding:0 16px} /* Menos margen a los lados. */
@@ -85,7 +103,8 @@ footer .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap
   .fila{grid-template-columns:1fr;gap:28px} /* Texto arriba e imagen abajo. */
   .fila+.fila{margin-top:64px} /* Menos espacio entre Accesos y Vencimientos. */
   .semaforo{order:2} /* En Vencimientos, el texto va antes que el semáforo. */
-  .planes,.seguridad{grid-template-columns:1fr} /* Planes y razones de seguridad uno debajo del otro. */
+  .planes,.seguridad,.guias{grid-template-columns:1fr} /* Planes, seguridad y manuales uno debajo del otro. */
+  .toast{bottom:88px} /* En celular, el aviso queda encima del botón de WhatsApp. */
   .cta-final{padding:40px 20px} /* Recuadro azul con menos relleno. */
   .wa span{display:none} .wa{padding:0;width:56px;justify-content:center} /* En celular, el botón de WhatsApp es solo el ícono. */
 }
@@ -107,6 +126,7 @@ footer .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap
     <a class="btn secundario" href="#accesos">Ver cómo funciona</a><!-- Baja a la sección Accesos. -->
   </div>
   <p class="nota">Gratis hasta 5 empresas · Windows 10 y 11 · <span class="version">Versión 0.1.0</span></p><!-- Datos rápidos; la versión se actualiza sola. -->
+  <div class="guia">¿Primera vez? Mira cómo descargar en: <a class="chip" href="manual-descarga.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Microsoft Edge</a><a class="chip" href="manual-chrome.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Google Chrome</a></div><!-- Idea A: acceso rápido a los manuales. -->
   <div class="marco"><div class="barra"><i></i><i></i><i></i></div><img src="app-empresas.png" alt="Pantalla de empresas de ContaFlow con sus botones de acceso a cada portal" width="2590" height="1600"></div><!-- Captura real de la app. -->
 </header>
 </div>
@@ -147,6 +167,14 @@ footer .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap
   </div>
   <p class="nota" style="margin-top:24px">Todos los planes, incluido el Gratis, reciben todas las actualizaciones de ContaFlow.</p><!-- Aclaración de actualizaciones. -->
 </div></section>
+<section id="instalacion"><div class="contenedor centro"><!-- Idea B: manuales de instalación. -->
+  <p class="etiqueta">Instalación</p><h2>¿Cómo la descargo?</h2><!-- Título. -->
+  <p class="texto-grande" style="max-width:620px;margin:16px auto 0">Elige tu navegador y sigue el paso a paso con imágenes.</p><!-- Explicación. -->
+  <div class="guias"><!-- Las dos tarjetas. -->
+    <a class="gcard" href="manual-descarga.html"><div class="mini"><img src="manual/paso3.png" alt="" width="405" height="196"></div><div class="info"><div><b>Microsoft Edge</b><div class="nota">6 pasos · incluye el aviso de Edge</div></div><span class="ir">Ver manual →</span></div></a><!-- Manual de Edge. -->
+    <a class="gcard" href="manual-chrome.html"><div class="mini"><img src="manual/chrome/paso3.png" alt="" width="360" height="170"></div><div class="info"><div><b>Google Chrome</b><div class="nota">3 pasos · normalmente sin avisos</div></div><span class="ir">Ver manual →</span></div></a><!-- Manual de Chrome. -->
+  </div>
+</div></section>
 <section id="ayuda"><div class="contenedor centro"><!-- Ayuda. -->
   <p class="etiqueta">Ayuda</p><h2>Preguntas frecuentes</h2><!-- Título de Ayuda. -->
   <div class="preg"><!-- Cada pregunta se abre al pulsarla. -->
@@ -165,7 +193,18 @@ footer .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap
 </div></div></section>
 <footer><div class="contenedor"><span>© 2026 ContaFlow</span><a href="https://wa.link/b9o2a2" target="_blank" rel="noopener">Contacto por WhatsApp</a></div></footer><!-- Pie de página. -->
 <a class="wa" href="https://wa.link/b9o2a2" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.2-.2-.4-.3Z"/></svg><span>Escríbenos</span></a><!-- Botón fijo de WhatsApp. -->
+<div class="toast" id="aviso-descarga" role="status" hidden><!-- Idea C: aparece al pulsar un botón de descarga. -->
+  <div class="icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M8 7h7M8 11h7"/></svg></div><!-- Ícono del libro. -->
+  <div><b>Tu descarga empezó</b><p class="nota" style="margin-top:4px">Si el navegador muestra un aviso, es normal. Sigue el paso a paso:</p><!-- Mensaje. -->
+    <div class="bot"><a class="btn primario chico" href="manual-descarga.html">Manual para Edge</a><a class="btn secundario chico" href="manual-chrome.html">Manual para Chrome</a></div></div><!-- Botones de los manuales. -->
+  <button class="x" type="button" aria-label="Cerrar aviso">×</button><!-- Cerrar. -->
+</div>
 <script>
+// Muestra el aviso con los manuales cuando alguien pulsa un botón de descarga (la descarga sigue normal).
+const aviso = document.getElementById("aviso-descarga"); // El recuadro del aviso.
+document.querySelectorAll("a.descarga").forEach(a => a.addEventListener("click", () => aviso.hidden = false)); // Al descargar, lo mostramos.
+aviso.querySelector(".x").addEventListener("click", () => aviso.hidden = true); // La × lo cierra.
+document.addEventListener("keydown", e => { if (e.key === "Escape") aviso.hidden = true; }); // La tecla Esc también lo cierra.
 // Al pulsar Accesos, Vencimientos o "Ver cómo funciona", deja esa parte en el medio de la pantalla.
 document.querySelectorAll('a[href="#accesos"], a[href="#vencimientos"]').forEach(a => a.addEventListener("click", e => { // Cada uno de esos enlaces.
   const destino = document.querySelector(a.getAttribute("href")); // La parte a mostrar.
