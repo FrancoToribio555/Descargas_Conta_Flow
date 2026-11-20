@@ -3,7 +3,7 @@
 <head><!-- Datos de la página. -->
 <meta charset="utf-8"><!-- Permite tildes y la ñ. -->
 <meta name="viewport" content="width=device-width,initial-scale=1"><!-- Se adapta al celular. -->
-<title>Cómo descargar ContaFlow en Chrome · Manual</title><!-- Nombre en la pestaña. -->
+<title>Cómo descargar e instalar ContaFlow en Chrome · Manual</title><!-- Nombre en la pestaña. -->
 <meta name="description" content="Paso a paso para descargar e instalar ContaFlow desde Google Chrome."><!-- Resumen para Google. -->
 <link rel="icon" href="simbolo.svg" type="image/svg+xml"><!-- Logo de la pestaña. -->
 <style>
@@ -23,6 +23,13 @@ header{padding:40px 0 8px} /* Espacio del título. */
 h1{font-size:40px;line-height:1.1;letter-spacing:-.02em;font-weight:800;text-wrap:balance} /* Título del manual. */
 .lema{font-size:18px;color:var(--texto2);margin-top:14px} /* Texto bajo el título. */
 .otro{margin-top:10px;color:var(--texto2)} /* Enlace al manual del otro navegador. */
+.bloque{font-size:28px;line-height:1.2;letter-spacing:-.02em;font-weight:800;margin:48px 0 6px} /* Título de la parte "Instala ContaFlow". */
+.boton-win{display:inline-block;padding:4px 14px;border:1px solid #9CA3AF;border-radius:4px;background:#F3F4F6;color:var(--texto);font-size:14px;font-weight:600;white-space:nowrap} /* Dibujo de un botón del instalador. */
+ol.pasos.sigue{counter-reset:none;margin-top:24px} /* La instalación sigue la numeración de la descarga. */
+.asistente{list-style:none;margin-top:14px;border-top:1px solid var(--borde)} /* Lista de pantallas del asistente. */
+.asistente li{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--borde);color:var(--texto2)} /* Cada pantalla: qué hacer y qué botón pulsar. */
+.asistente li .boton-win{flex:none} /* El botón no se achica. */
+@media (max-width:640px){.asistente li{flex-direction:column;align-items:flex-start;gap:8px} .bloque{font-size:24px}} /* En celular, el botón va debajo del texto. */
 .aviso{background:#FFF7ED;border:1px solid #FDBA74;color:#9A3412;border-radius:12px;padding:16px 20px;margin-top:24px} /* Recuadro ámbar de "es normal". */
 ol.pasos{list-style:none;counter-reset:paso;margin:40px 0 0} /* Lista numerada de pasos. */
 .paso{counter-increment:paso;background:#fff;border:1px solid var(--borde);border-radius:16px;padding:28px;margin-bottom:20px;break-inside:avoid} /* Tarjeta de cada paso (no se parte al imprimir). */
@@ -42,8 +49,8 @@ ol.pasos{list-style:none;counter-reset:paso;margin:40px 0 0} /* Lista numerada d
 <div class="contenedor"><!-- Columna de lectura. -->
 <nav><a href="index.html" aria-label="ContaFlow, inicio"><img src="logo-horizontal.svg" alt="ContaFlow" width="150" height="30"></a><a class="btn" href="index.html#ayuda">← Volver a la ayuda</a></nav><!-- Logo y botón para volver. -->
 <header><!-- Título del manual. -->
-  <h1>Cómo descargar ContaFlow en Google Chrome</h1><!-- Título. -->
-  <p class="lema">Toma menos de un minuto. Son solo 3 pasos.</p><!-- Resumen. -->
+  <h1>Cómo descargar e instalar ContaFlow en Google Chrome</h1><!-- Título. -->
+  <p class="lema">Descárgalo en 3 pasos e instálalo en 4. Toma un par de minutos.</p><!-- Resumen. -->
   <p class="otro">¿Usas Microsoft Edge? <a href="manual-descarga.html">Ver el manual para Edge</a>.</p><!-- Enlace al otro manual. -->
 </header>
 <ol class="pasos"><!-- Los pasos. -->
@@ -54,10 +61,29 @@ ol.pasos{list-style:none;counter-reset:paso;margin:40px 0 0} /* Lista numerada d
     <p>Arriba a la derecha se abre <b>Historial de descargas recientes</b> y verás cómo avanza <b>ContaFlow-Instalador</b>. Tarda unos segundos. Si el panel se cierra, ábrelo con el ícono de la <b>flecha hacia abajo</b>.</p><!-- Qué hacer. -->
     <div class="captura angosta"><img src="manual/chrome/paso2.png" alt="Historial de descargas de Chrome con ContaFlow-Instalador descargándose y el ícono de descargas marcado" width="362" height="174" loading="lazy"></div>
     <p>Normalmente Chrome no muestra ningún aviso. Si aparece uno, elige <b>Conservar</b>.</p></li><!-- Por si Chrome avisa. -->
-  <li class="paso"><h2>Pulsa "Abrir" e instala</h2><!-- Paso 3. -->
-    <p>Cuando diga <b>Hecho</b>, pulsa el botón <b>Abrir</b> (el cuadradito con una flecha) y sigue el asistente. No necesita permisos de administrador.</p><!-- Qué hacer. -->
-    <div class="captura angosta"><img src="manual/chrome/paso3.png" alt="ContaFlow-Instalador descargado, con el botón Abrir marcado" width="360" height="170" loading="lazy"></div>
-    <p>Si Windows muestra <b>"Windows protegió su PC"</b>, pulsa <b>Más información</b> y luego <b>Ejecutar de todas formas</b>.</p></li><!-- Aviso de Windows (no siempre aparece). -->
+  <li class="paso"><h2>Pulsa "Abrir"</h2><!-- Paso 3. -->
+    <p>Cuando diga <b>Hecho</b>, pulsa el botón <b>Abrir</b> (el cuadradito con una flecha) para abrir el instalador.</p><!-- Qué hacer. -->
+    <div class="captura angosta"><img src="manual/chrome/paso3.png" alt="ContaFlow-Instalador descargado, con el botón Abrir marcado" width="360" height="170" loading="lazy"></div></li>
+</ol>
+<h2 class="bloque" id="instalar">Instala ContaFlow</h2><!-- Segunda parte del manual. -->
+<p class="lema">El instalador se abrió. Toma menos de un minuto y no pide permisos de administrador.</p><!-- Resumen. -->
+<ol class="pasos sigue"><!-- Pasos de instalación (siguen la numeración de la descarga). -->
+  <li class="paso"><h2>Si Windows pregunta, pulsa "Ejecutar de todas formas"</h2><!-- Aviso de Windows. -->
+    <p>A veces aparece una ventana azul que dice <b>"Windows protegió su PC"</b>. Pulsa <b>Más información</b> y luego <b>Ejecutar de todas formas</b>. Si no aparece, sigue al siguiente paso.</p></li><!-- Qué hacer. -->
+  <li class="paso"><h2>Sigue el asistente</h2><!-- Asistente de instalación. -->
+    <p>El instalador te muestra estas pantallas, una tras otra:</p><!-- Introducción. -->
+    <ul class="asistente"><!-- Pantallas del asistente y su botón. -->
+      <li><span><b>Carpeta de destino:</b> deja la que propone.</span><span class="boton-win">Siguiente &gt;</span></li><!-- Carpeta. -->
+      <li><span><b>Tareas adicionales:</b> marca "Crear un acceso directo en el escritorio" si lo quieres.</span><span class="boton-win">Siguiente &gt;</span></li><!-- Acceso directo. -->
+      <li><span><b>Listo para instalar:</b> revisa y confirma.</span><span class="boton-win">Instalar</span></li><!-- Confirmar. -->
+      <li><span><b>Instalación completa:</b> deja marcado "Abrir ContaFlow ahora".</span><span class="boton-win">Finalizar</span></li><!-- Terminar. -->
+    </ul></li>
+  <li class="paso"><h2>Registra tu primera empresa</h2><!-- Primer inicio. -->
+    <p>ContaFlow se abre en el <b>plan Gratis</b> (hasta 5 empresas). Pulsa <b>+ Nueva empresa</b> para registrar la primera; con la flechita <b>▾</b> puedes cargar varias desde Excel. Después lo encuentras en el menú Inicio de Windows (y en el escritorio, si marcaste el acceso directo).</p><!-- Qué hacer. -->
+    <div class="captura"><img src="manual/instalacion/inicio.png" alt="ContaFlow recién instalado, sin empresas, con el botón Nueva empresa y Ajustes marcados" width="1298" height="800" loading="lazy"></div></li><!-- Captura real de la app. -->
+  <li class="paso"><h2>¿Tienes una licencia? Actívala en Ajustes</h2><!-- Activar licencia. -->
+    <p>Pulsa <b>Ajustes</b> (abajo a la izquierda). En <b>Licencia</b>, pulsa <b>Copiar</b> y envía tu <b>código de este equipo</b> por <a href="https://wa.link/b9o2a2" target="_blank" rel="noopener">WhatsApp</a>. Cuando recibas tu código de licencia, pégalo en el paso 2 y pulsa <b>Activar</b>. Cada licencia funciona en una sola PC.</p><!-- Qué hacer. -->
+    <div class="captura angosta" style="max-width:560px"><img src="manual/instalacion/licencia.png" alt="Ventana Ajustes de ContaFlow: código de este equipo con el botón Copiar y campo de código de licencia con el botón Activar" width="560" height="325" loading="lazy"></div></li><!-- Captura real de la app. -->
 </ol>
 <div class="final"><!-- Cierre. -->
   <p>¿Te quedaste en algún paso? Escríbeme y te ayudo.</p><!-- Invitación a escribir. -->
